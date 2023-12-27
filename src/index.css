@@ -1,3 +1,7 @@
 html{
     overflow-y: scroll; /*to prevent the scrollbar from repositioning the page */
 }
+
+form{
+    width:100%;
+}
