@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -21,38 +22,46 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <List>
-      {data.map((genre) => (
-        <Button key={genre.id}  variant="link" onClick={() => onSelectGenre(genre)}>
-          <Box
-            bg={genre.id === selectedGenre?.id ? "#2D3748" : "transparent"}
-            w="180px"
-            borderRadius={3}
+    <>
+      <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
+      <List>
+        {data.map((genre) => (
+          <Button
+            key={genre.id}
+            variant="link"
+            onClick={() => onSelectGenre(genre)}
           >
-            <ListItem >
-              <HStack padding="5px">
-                <Image
-                  boxSize="32px"
-                  borderRadius={8}
-                  src={getCroppedImageUrl(genre.image_background)}
-                />
+            <Box
+              bg={genre.id === selectedGenre?.id ? "#2D3748" : "transparent"}
+              w="180px"
+              borderRadius={3}
+            >
+              <ListItem>
+                <HStack padding="5px">
+                  <Image
+                    boxSize="32px"
+                    borderRadius={8}
+                    objectFit="cover"
+                    src={getCroppedImageUrl(genre.image_background)}
+                  />
 
-                <Text
-                  fontSize="lg"
-                  fontWeight={
-                    genre.id === selectedGenre?.id ? "bold" : "normal"
-                  }
-                >
-                  {genre.slug === "massively-multiplayer"
-                    ? "Multiplayer"
-                    : genre.name}
-                </Text>
-              </HStack>
-            </ListItem>
-          </Box>
-        </Button>
-      ))}
-    </List>
+                  <Text
+                    fontSize="lg"
+                    fontWeight={
+                      genre.id === selectedGenre?.id ? "bold" : "normal"
+                    }
+                  >
+                    {genre.slug === "massively-multiplayer"
+                      ? "Multiplayer"
+                      : genre.name}
+                  </Text>
+                </HStack>
+              </ListItem>
+            </Box>
+          </Button>
+        ))}
+      </List>
+    </>
   );
 };
 
