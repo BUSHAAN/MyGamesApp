@@ -1,12 +1,12 @@
 import {
-    Box,
-    Button,
-    HStack,
-    Image,
-    List,
-    ListItem,
-    Spinner,
-    Text,
+  Box,
+  Button,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Spinner,
+  Text,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
@@ -23,13 +23,13 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   return (
     <List>
       {data.map((genre) => (
-        <Button  variant="link" onClick={() => onSelectGenre(genre)}>
+        <Button key={genre.id}  variant="link" onClick={() => onSelectGenre(genre)}>
           <Box
             bg={genre.id === selectedGenre?.id ? "#2D3748" : "transparent"}
             w="180px"
             borderRadius={3}
           >
-            <ListItem key={genre.id}>
+            <ListItem >
               <HStack padding="5px">
                 <Image
                   boxSize="32px"
