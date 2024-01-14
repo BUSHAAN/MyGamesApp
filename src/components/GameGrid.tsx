@@ -1,9 +1,22 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { GameQuery } from "../App";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
+
+const containerVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 interface Props {
   gameQuery: GameQuery;
@@ -16,23 +29,39 @@ const GameGrid = ({ gameQuery }: Props) => {
   if (error) return <Text>{error}</Text>;
 
   return (
-    <SimpleGrid
-      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-      padding="10px"
-      spacing={3}
-    >
-      {isLoading &&
-        skeletons.map((skeleton) => (
-          <GameCardContainer key={skeleton}>
-            <GameCardSkeleton />
-          </GameCardContainer>
+    <AnimatePresence>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        padding="10px"
+        spacing={3}
+      >
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <motion.div
+              variants={containerVariants}
+              initial="initial"
+              animate="animate"
+              exit="initial"
+            >
+              <GameCardContainer key={skeleton}>
+                <GameCardSkeleton />
+              </GameCardContainer>
+            </motion.div>
+          ))}
+        {data.map((game) => (
+          <motion.div
+            variants={containerVariants}
+            initial="initial"
+            animate="animate"
+            exit="initial"
+          >
+            <GameCardContainer key={game.id}>
+              <GameCard game={game} />
+            </GameCardContainer>
+          </motion.div>
         ))}
-      {data.map((game) => (
-        <GameCardContainer key={game.id}>
-          <GameCard game={game} />
-        </GameCardContainer>
-      ))}
-    </SimpleGrid>
+      </SimpleGrid>
+    </AnimatePresence>
   );
 };
 
