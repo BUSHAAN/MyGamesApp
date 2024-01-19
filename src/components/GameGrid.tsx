@@ -1,22 +1,12 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GameQuery } from "../App";
+import { containerVariants } from "../animations/variants";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
-const containerVariants = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
 
 interface Props {
   gameQuery: GameQuery;
@@ -25,6 +15,8 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  
+  
 
   if (error) return <Text>{error}</Text>;
 
@@ -35,7 +27,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         padding="10px"
         spacing={3}
       >
-        {isLoading &&
+        {(isLoading) &&
           skeletons.map((skeleton) => (
             <motion.div
               variants={containerVariants}

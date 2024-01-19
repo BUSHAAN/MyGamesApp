@@ -9,6 +9,8 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { genreVariants } from "../animations/variants";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
@@ -23,44 +25,57 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   if (isLoading) return <Spinner />;
   return (
     <>
-      <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
-      <List>
-        {data.map((genre) => (
-          <Button
-            key={genre.id}
-            variant="link"
-            onClick={() => onSelectGenre(genre)}
-          >
-            <Box
-              bg={genre.id === selectedGenre?.id ? "#2D3748" : "transparent"}
-              w="180px"
-              borderRadius={3}
-            >
-              <ListItem>
-                <HStack padding="5px">
-                  <Image
-                    boxSize="32px"
-                    borderRadius={8}
-                    objectFit="cover"
-                    src={getCroppedImageUrl(genre.image_background)}
-                  />
+      <AnimatePresence>
+        <motion.div
+          variants={genreVariants}
+          initial="initial"
+          animate="animate"
+          exit="initial"
+        >
+          <Heading fontSize="2xl" marginBottom={3}>
+            Genres
+          </Heading>
+          <List>
+            {data.map((genre) => (
+              <Button
+                key={genre.id}
+                variant="link"
+                onClick={() => onSelectGenre(genre)}
+              >
+                <Box
+                  bg={
+                    genre.id === selectedGenre?.id ? "#2D3748" : "transparent"
+                  }
+                  w="180px"
+                  borderRadius={3}
+                >
+                  <ListItem>
+                    <HStack padding="5px">
+                      <Image
+                        boxSize="32px"
+                        borderRadius={8}
+                        objectFit="cover"
+                        src={getCroppedImageUrl(genre.image_background)}
+                      />
 
-                  <Text
-                    fontSize="lg"
-                    fontWeight={
-                      genre.id === selectedGenre?.id ? "bold" : "normal"
-                    }
-                  >
-                    {genre.slug === "massively-multiplayer"
-                      ? "Multiplayer"
-                      : genre.name}
-                  </Text>
-                </HStack>
-              </ListItem>
-            </Box>
-          </Button>
-        ))}
-      </List>
+                      <Text
+                        fontSize="lg"
+                        fontWeight={
+                          genre.id === selectedGenre?.id ? "bold" : "normal"
+                        }
+                      >
+                        {genre.slug === "massively-multiplayer"
+                          ? "Multiplayer"
+                          : genre.name}
+                      </Text>
+                    </HStack>
+                  </ListItem>
+                </Box>
+              </Button>
+            ))}
+          </List>
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 };
