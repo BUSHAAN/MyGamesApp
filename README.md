@@ -23,3 +23,6 @@ Welcome to the repository for a fully functional, screen-responsive video game d
 
 ## Coming Soon
 - **Clickable Cards:** User will be able to view a description on a floating window and naviagte to the websites where the games are available.
+
+## Preview
+ ![Alt text](src/assets/preview.jpg?raw=true "Preview")
