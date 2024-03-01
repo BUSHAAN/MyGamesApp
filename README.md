@@ -26,3 +26,25 @@ Welcome to the repository for a fully functional, screen-responsive video game d
 
 ## Preview
  ![Alt text](src/assets/preview.jpg?raw=true "Preview")
+
+## Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/BUSHAAN/MyGamesApp.git
+   ```
+2. **Install dependencies:**
+
+   ```bash
+   cd MyGamesApp
+   npm install
+   ```
+   
+## Usage
+- **Start the development server**
+
+   ```bash
+   npm start
+   ```
+  
