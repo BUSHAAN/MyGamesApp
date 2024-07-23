@@ -46,6 +46,7 @@ const GameGrid = ({ gameQuery }: Props) => {
             initial="initial"
             animate="animate"
             exit="initial"
+            whileHover="whileHover"
           >
             <GameCardContainer key={game.id}>
               <GameCard game={game} />
