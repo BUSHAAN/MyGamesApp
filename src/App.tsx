@@ -57,7 +57,7 @@ function App() {
             </GridItem>
           </Show>
           <GridItem area="main">
-            <Box paddingLeft={2}>
+            <Box paddingLeft={2} style={{ position: "relative", zIndex: 9999 }}>
               <motion.div variants={containerVariants}>
                 <GameHeading gameQuery={gameQuery} />
 
@@ -77,7 +77,9 @@ function App() {
                 </HStack>
               </motion.div>
             </Box>
-            <GameGrid gameQuery={gameQuery} />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <GameGrid gameQuery={gameQuery} />
+            </div>
           </GridItem>
         </Grid>
       </motion.div>
