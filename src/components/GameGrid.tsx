@@ -7,7 +7,6 @@ import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
-
 interface Props {
   gameQuery: GameQuery;
 }
@@ -15,8 +14,6 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-  
-  
 
   if (error) return <Text>{error}</Text>;
 
@@ -26,10 +23,12 @@ const GameGrid = ({ gameQuery }: Props) => {
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         padding="10px"
         spacing={3}
+        style={{ overflow: "auto" }}
       >
-        {(isLoading) &&
+        {isLoading &&
           skeletons.map((skeleton) => (
             <motion.div
+              key={skeleton}
               variants={containerVariants}
               initial="initial"
               animate="animate"
@@ -40,17 +39,20 @@ const GameGrid = ({ gameQuery }: Props) => {
               </GameCardContainer>
             </motion.div>
           ))}
-        {data.map((game) => (
+        {data.map((game,index) => (
           <motion.div
+            key={game.id}
             variants={containerVariants}
             initial="initial"
             animate="animate"
             exit="initial"
             whileHover="whileHover"
+            style={{
+              position: "relative", 
+              zIndex: data.length - index,
+            }}
           >
-            <GameCardContainer key={game.id}>
-              <GameCard game={game} />
-            </GameCardContainer>
+            <GameCard game={game} />
           </motion.div>
         ))}
       </SimpleGrid>

@@ -7,13 +7,21 @@ export interface Platform {
   slug: string;
 }
 
+export interface Genre{
+  id: number;
+  name: string;
+  slug: string;
+}
 export interface Game {
   id: number;
   name: string;
+  released: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating_top: number;
+  genres: Genre[];
+  short_screenshots: { id: number; image: string }[];
 }
 
 const useGames = (gameQuery: GameQuery) => {

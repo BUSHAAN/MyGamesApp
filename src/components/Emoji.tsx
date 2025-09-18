@@ -17,7 +17,7 @@ const Emoji = ({rating}:Props) => {
     }
 
   return (
-    <Image {...emojiMap[rating]} boxSize='25px' marginTop={1}/>
+    <Image {...emojiMap[rating]} boxSize='20px' marginTop={1}/>
   )
 }
 
