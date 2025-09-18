@@ -1,4 +1,4 @@
-# Video Game Discovery Application
+# GameScout (Video Game Discovery Application)
 
 ## Overview
 
