@@ -1,5 +1,9 @@
 # GameScout (Video Game Discovery Application)
 
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![Chakra UI](https://img.shields.io/badge/Chakra%20UI-319795?logo=chakraui&logoColor=white)
+![RAWG API](https://img.shields.io/badge/RAWG.io-000000?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAM1BMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABn84YlAAAADHRSTlMABgwQEhcjMzpGWWZ4sS4AAABkSURBVBjTY2DABhgYGJgFIMDE0QkYGVk4BBEwsjA0XBh0VAUmBOKoAiCqOwgGI4j2AOFiEYhgDA2Fdo8L8gCgwIMAlIxhQ2A1EBAmKM5Bgk5MQgBQIIYE1bAJkC0MJAwDYqCcNc5cyIAAAAASUVORK5CYII=)
+
 ## Overview
 
 Welcome to the repository for a fully functional, screen-responsive video game discovery application built with ReactJS and Chakra UI! This application empowers users to:
